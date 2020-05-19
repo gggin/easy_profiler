@@ -128,7 +128,7 @@ struct async_result_t {};
 #define EASY_FINISH_ASYNC async_result_t dummy_async_result; return dummy_async_result
 #else
 using async_result_t = void;
-#define EASY_FINISH_ASYNC 
+#define EASY_FINISH_ASYNC
 #endif
 
 using async_future = std::future<async_result_t>;
@@ -172,7 +172,7 @@ public:
 
     ReaderThreadPool()
     {
-        m_stopFlag = ATOMIC_VAR_INIT(false);
+        m_stopFlag = false;
         m_threads.reserve(std::thread::hardware_concurrency());
     }
 

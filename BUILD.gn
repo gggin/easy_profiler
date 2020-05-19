@@ -1,0 +1,49 @@
+import("//build/config/jumbo.gni")
+import("//build/config/ui.gni")
+import("//testing/test.gni")
+import("//third_party/blink/renderer/bindings/bindings.gni")
+import("//third_party/blink/renderer/config.gni")
+import("//third_party/blink/renderer/core/core.gni")
+import("//third_party/blink/renderer/modules/modules.gni")
+
+visibility = [ "//third_party/blink/*" ]
+
+config("easy_profiler_include") {
+  include_dirs = [
+    "//third_party/easy_profiler/easy_profiler_core/include"
+       ]
+    }
+
+component("easy_profiler") {
+  output_name = "easy_profiler"
+  public = [
+    "easy_profiler_core/include/*"
+  ]
+  defines = [
+          "EASY_PROFILER_VERSION_MAJOR=2",
+          "EASY_PROFILER_VERSION_MINOR=1",
+          "EASY_PROFILER_VERSION_PATCH=0",
+          "EASY_PROFILER_IMPL",
+          "BUILD_WITH_EASY_PROFILER=1",
+      ]
+
+  public_configs = [
+    ":easy_profiler_include"
+  ]
+
+
+  sources = [
+    "easy_profiler_core/base_block_descriptor.cpp",
+    "easy_profiler_core/block.cpp",
+    "easy_profiler_core/block_descriptor.cpp",
+    "easy_profiler_core/easy_socket.cpp",
+    "easy_profiler_core/event_trace_win.cpp",
+    "easy_profiler_core/nonscoped_block.cpp",
+    "easy_profiler_core/profile_manager.cpp",
+    "easy_profiler_core/profiler.cpp",
+    "easy_profiler_core/reader.cpp",
+    "easy_profiler_core/serialized_block.cpp",
+    "easy_profiler_core/thread_storage.cpp",
+    "easy_profiler_core/writer.cpp"
+  ]
+}

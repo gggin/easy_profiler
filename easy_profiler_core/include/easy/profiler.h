@@ -10,19 +10,19 @@ at your option.
 The MIT License
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights 
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies 
-    of the Software, and to permit persons to whom the Software is furnished 
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+    of the Software, and to permit persons to whom the Software is furnished
     to do so, subject to the following conditions:
 
-    The above copyright notice and this permission notice shall be included in all 
+    The above copyright notice and this permission notice shall be included in all
     copies or substantial portions of the Software.
 
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-    INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR 
-    PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE 
-    LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
-    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE 
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+    INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+    PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+    LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
     USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
@@ -43,6 +43,8 @@ The Apache License, Version 2.0 (the "License");
 #ifndef EASY_PROFILER_H
 #define EASY_PROFILER_H
 
+#define BUILD_WITH_EASY_PROFILER 1
+#define EASY_OPTION_PRETTY_PRINT_FUNCTIONS 1
 #include <easy/details/profiler_public_types.h>
 
 #define MAX_DYNAMIC_BLOCK_NAME_SIZE_ESTIMATED MAX_BLOCK_DATA_SIZE
@@ -380,18 +382,18 @@ Otherwise, no log messages will be printed.
 # define EASY_BLOCK(...)
 # define EASY_NONSCOPED_BLOCK(...)
 # define EASY_FUNCTION(...)
-# define EASY_END_BLOCK 
-# define EASY_PROFILER_ENABLE 
-# define EASY_PROFILER_DISABLE 
+# define EASY_END_BLOCK
+# define EASY_PROFILER_ENABLE
+# define EASY_PROFILER_DISABLE
 # define EASY_EVENT(...)
 # define EASY_THREAD(...)
 # define EASY_THREAD_SCOPE(...)
-# define EASY_MAIN_THREAD 
-# define EASY_SET_EVENT_TRACING_ENABLED(isEnabled) 
-# define EASY_SET_LOW_PRIORITY_EVENT_TRACING(isLowPriority) 
+# define EASY_MAIN_THREAD
+# define EASY_SET_EVENT_TRACING_ENABLED(isEnabled)
+# define EASY_SET_LOW_PRIORITY_EVENT_TRACING(isLowPriority)
 
 # ifndef _WIN32
-#  define EASY_EVENT_TRACING_SET_LOG(filename) 
+#  define EASY_EVENT_TRACING_SET_LOG(filename)
 #  define EASY_EVENT_TRACING_LOG ""
 # endif
 
@@ -506,7 +508,7 @@ namespace profiler {
         \param _runtimeName Standard zero-terminated string which will be copied to the events buffer.
 
         \note _runtimeName must be an empty string ("") if you do not want to set name to the event at run-time.
-        
+
         \ingroup profiler
         */
         PROFILER_API void storeEvent(const BaseBlockDescriptor* _desc, const char* _runtimeName = "");
@@ -667,7 +669,7 @@ namespace profiler {
         PROFILER_API bool isListening();
 
         /** Returns current major version.
-        
+
         \ingroup profiler
         */
         PROFILER_API uint8_t versionMajor();
