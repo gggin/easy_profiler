@@ -6,7 +6,8 @@ import("//third_party/blink/renderer/config.gni")
 import("//third_party/blink/renderer/core/core.gni")
 import("//third_party/blink/renderer/modules/modules.gni")
 
-visibility = [ "//third_party/blink/*", "//content/*" , "//cc/*" ]
+visibility = [ "//third_party/blink/*", "//content/*"
+, "//cc/*" , "//services/*", "//base/*" ]
 
 config("easy_profiler_include") {
   include_dirs = [
