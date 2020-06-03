@@ -910,4 +910,31 @@ namespace profiler {
 # pragma clang diagnostic pop
 #endif
 
+
+
+#define SUPPRESS_WARNINGS_CATCH_BEGIN \
+  _Pragma("clang diagnostic push")    \
+      _Pragma("clang diagnostic ignored \"-Wexit-time-destructors\"")\
+      _Pragma("clang diagnostic ignored \"-Wglobal-constructors\"")
+
+#define SUPPRESS_WARNINGS_CATCH_END _Pragma("clang diagnostic pop")
+
+SUPPRESS_WARNINGS_CATCH_BEGIN
+class ProcessScopedProfiler {
+  public:
+  ProcessScopedProfiler(std::string name, int port):
+  name_(name){
+  EASY_PROFILER_ENABLE;
+  profiler::startListen(port);
+  }
+  ~ProcessScopedProfiler() {
+      std::string a("./");
+      a += name_;
+      profiler::dumpBlocksToFile(a.c_str());
+      profiler::stopListen();
+  }
+  std::string name_;
+};
+SUPPRESS_WARNINGS_CATCH_END
+
 #endif // EASY_PROFILER_H
