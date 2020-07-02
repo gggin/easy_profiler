@@ -930,8 +930,10 @@ class ProcessScopedProfiler {
   ~ProcessScopedProfiler() {
       std::string a("./");
       a += name_;
+#if !(__ANDROID__)
       profiler::dumpBlocksToFile(a.c_str());
       profiler::stopListen();
+#endif
   }
   std::string name_;
 };
